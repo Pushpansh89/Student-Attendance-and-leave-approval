@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Attendance & Leave Management — JIMS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- ══ LOGIN ══ -->
+<div id="login-screen">
+  <div class="login-form-side">
+    <div class="login-box">
+      <div class="login-logo">
+        <div class="logo-mark">J</div>
+        <span class="logo-text">JIMS</span>
+      </div>
+      <div class="login-header">
+        <h2 class="login-title">Welcome back</h2>
+        <p class="login-subtitle">Sign in to your dashboard</p>
+      </div>
+      <div class="role-tabs">
+        <button class="role-tab active" onclick="setRole('student',this)">🎓 Student</button>
+        <button class="role-tab"        onclick="setRole('admin',this)">🛡 Administrator</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label" id="id-label">Student ID</label>
+        <input class="form-input" id="login-id"   type="text"     placeholder="e.g. 04614004425" value="04614004425">
+        <div class="demo-hint" id="demo-hint">Demo: 04614004425 / password123</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" id="login-pass" type="password" value="password123" placeholder="••••••••">
+      </div>
+      <div id="login-error"></div>
+      <button class="btn-primary" id="login-btn" onclick="doLogin()">Sign In →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ APP SHELL ══ -->
+<div id="app" style="display:none">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-mark">J</div>
+        <span class="sidebar-logo-text">JIMS</span>
+      </div>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-avatar" id="sb-avatar">SA</div>
+      <div class="sidebar-name"   id="sb-name">Name</div>
+      <div class="sidebar-role"   id="sb-role">Role</div>
+    </div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer">
+      <button class="btn-logout" onclick="doLogout()">⇠ Sign Out</button>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <div class="topbar">
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+      <div class="topbar-right">
+        <div class="topbar-date" id="topbar-date"></div>
+        <div class="notif-btn" onclick="toggleNotifPanel()">🔔<div class="notif-dot" style="display:none"></div></div>
+      </div>
+    </div>
+
+    <!-- Student pages -->
+    <div class="page-content" id="page-student-dashboard"></div>
+    <div class="page-content" id="page-student-attendance"></div>
+    <div class="page-content" id="page-student-leave"></div>
+    <div class="page-content" id="page-student-history"></div>
+    <div class="page-content" id="page-student-profile"></div>
+
+    <!-- Admin pages -->
+    <div class="page-content" id="page-admin-dashboard"></div>
+    <div class="page-content" id="page-admin-attendance"></div>
+    <div class="page-content" id="page-admin-leaves"></div>
+    <div class="page-content" id="page-admin-students"></div>
+    <div class="page-content" id="page-admin-subjects"></div>
+    <div class="page-content" id="page-admin-reports"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
